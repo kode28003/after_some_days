@@ -1,0 +1,52 @@
+<html>
+    <body>
+      <center>
+        <br>
+        <h3>何日後の日付を調べますか？</h3>
+        <input type="number" id="number2" value="14" max="2000" />
+        <button type="reset" onclick="mablJavaScriptStep()">決定</button>
+      </center>
+    </body>
+<script>
+ function mablJavaScriptStep() {
+  // addDays変数の数だけ日付を進める, Advance the date by the number of addDays variables
+  number2 = document.getElementById("number2").value;
+  let addDays=number2
+  if (addDays){
+    addDays = Number(addDays);
+  } else {
+    // addDaysが設定されてない場合は翌日にする, If addDays is not set, make it the next day.
+    addDays = 1;
+  }
+
+  console.log("add days: " + addDays);
+  let targetDate = new Date();
+  console.log("today: " + targetDate);
+  let y1 = targetDate.getFullYear();
+  let m1 = ('00' + (targetDate.getMonth()+1)).slice(-2);
+  let d1 = ('00' + targetDate.getDate()).slice(-2);
+  let dayOfWeek1 = targetDate.getDay() ;
+　let dayOfWeekStr1 = [ "日", "月", "火", "水", "木", "金", "土" ] ;
+  // ここで日付を加算しています。マイナスにすれば減算です, The date is added here. If we set it to minus, we are subtracting.
+  targetDate.setDate(targetDate.getDate() + addDays);
+  console.log(targetDate);
+
+  // 戻り値の作成, Creating Return Values
+  let y2 = targetDate.getFullYear();
+  let m2 = ('00' + (targetDate.getMonth()+1)).slice(-2);
+  let d2 = ('00' + targetDate.getDate()).slice(-2);
+  let dayOfWeek = targetDate.getDay() ;
+
+  // 日付のフォーマットはこちらで調整してください, Please adjust the date format here
+  document.write("<br>");
+  document.write("<center>");
+  document.write("今日の日付: "+ y1 + '-' + m1 + '-' + d1 + ' ('+dayOfWeekStr1[dayOfWeek1]+')');
+  document.write("<br>");
+  document.write("<br>");
+  document.write("2週間後の日付: "+ y2 + '-' + m2 + '-' + d2+ ' ('+dayOfWeekStr1[dayOfWeek]+')');
+  document.write("</center>");
+
+  console.log(y2 + '-' + m2 + '-' + d2)
+}
+</script>
+</html>
