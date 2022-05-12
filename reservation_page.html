@@ -1,0 +1,68 @@
+<html>
+    <body onload="today(); reserveDay(); " >
+      <center>
+        <br>
+        <p id ="today"></p>
+        <th>利用日</th>
+        <td>
+            <a href="#" class="reservation-date-button">
+              <label class="calendar">
+                <input class="new-calendar reservation-date-input-hidden" type="text"  name="form[date]" id="form_date" value="" onclick=""/>
+              </label>
+            </a>
+      </center>
+    </body>
+<tr>
+
+        <script>
+        function today(){
+        var myh1 = document.getElementById("myh1");
+        let addDays = 14;
+        console.log("add days: " + addDays);
+        let targetDate = new Date();
+        console.log("today: " + targetDate);
+        let y1 = targetDate.getFullYear();
+        let m1 = ('00' + (targetDate.getMonth()+1)).slice(-2);
+        let d1 = ('00' + targetDate.getDate()).slice(-2);
+        let dayOfWeek1 = targetDate.getDay() ;
+      　let dayOfWeekStr1 = [ "日", "月", "火", "水", "木", "金", "土" ] ;
+        // ここで日付を加算しています。マイナスにすれば減算です, The date is added here. If we set it to minus, we are subtracting.
+        targetDate.setDate(targetDate.getDate() + addDays);
+        console.log(targetDate);
+        let today='本日　' + y1 + '/' + m1 + '/' + d1+ '('+dayOfWeekStr1[dayOfWeek1]+')　';
+        return today;
+        }
+        document.getElementById("today").innerHTML = today();
+        </script>  
+        
+        <script>
+        function reserveDay(){
+        var myh1 = document.getElementById("myh1");
+        let addDays = 14;
+        console.log("add days: " + addDays);
+        let targetDate = new Date();
+        console.log("today: " + targetDate);
+        let y1 = targetDate.getFullYear();
+        let m1 = ('00' + (targetDate.getMonth()+1)).slice(-2);
+        let d1 = ('00' + targetDate.getDate()).slice(-2);
+        let dayOfWeek1 = targetDate.getDay() ;
+      　let dayOfWeekStr1 = [ "日", "月", "火", "水", "木", "金", "土" ] ;
+        // ここで日付を加算しています。マイナスにすれば減算です, The date is added here. If we set it to minus, we are subtracting.
+        targetDate.setDate(targetDate.getDate() + addDays);
+        console.log(targetDate);
+      
+        // 戻り値の作成, Creating Return Values
+        let y2 = targetDate.getFullYear();
+        let m2 = ('00' + (targetDate.getMonth()+1)).slice(-2);
+        let d2 = ('00' + targetDate.getDate()).slice(-2);
+        let dayOfWeek = targetDate.getDay() ;
+        let days= y2 + '/' + m2 + '/' + d2+ '('+dayOfWeekStr1[dayOfWeek]+')';
+        document.getElementById('form_date').value = days;
+        return days;
+        console.log(y2 + '/' + m2 + '/' + d2)
+      }
+        </script>   
+          </a>
+
+        </td>
+</html> 
